@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<link rel="icon" href="https://eapi.pcloud.com/getpubthumb?code=XZ1XEqZU6O7haRLpeVa047vjbslt0y61Ryy&linkpassword=&size=1024x1024&crop=0&type=auto" type="image/png">
+<link rel="shortcut icon" href="https://eapi.pcloud.com/getpubthumb?code=XZ1XEqZU6O7haRLpeVa047vjbslt0y61Ryy&linkpassword=&size=1024x1024&crop=0&type=auto" type="image/png">
+
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ronovy Stránky</title>
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background: #f6f7fa;
+    }
+
+    /* Header animace */
+    header {
+      background: linear-gradient(90deg, #FFA500, #87CEFA);
+      padding: 40px 20px;
+      text-align: center;
+      color: white;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      position: relative;
+      overflow: hidden;
+      border-radius: 10px;
+      margin: 10px;
+      opacity: 0;
+      transform: scale(0.98);
+      animation: headerFadeIn 1.2s cubic-bezier(.5,.1,.3,1) forwards;
+    }
+    @keyframes headerFadeIn {
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+    header h1 {
+      font-size: 3em;
+      margin: 0;
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+      animation: headerShine 2s ease-in 1;
+    }
+    @keyframes headerShine {
+      0% { text-shadow: 0 0 40px #fff, 0 0 10px #fff; }
+      100% { text-shadow: 0 0 10px rgba(255,255,255,0.7); }
+    }
+
+    /* Banner animace */
+    .banner {
+      margin: 20px auto;
+      max-width: 900px;
+      border-radius: 15px;
+      overflow: hidden;
+      position: relative;
+      box-shadow: 8px 8px 20px gray;
+      margin: 15px;
+      opacity: 0;
+      transform: translateY(40px);
+      animation: bannerIn 1s cubic-bezier(.5,.1,.3,1) forwards;
+      animation-delay: 0.4s;
+    }
+    .banner:nth-of-type(2) { animation-delay: 0.6s; }
+    .banner:nth-of-type(3) { animation-delay: 0.8s; }
+    .banner:nth-of-type(4) { animation-delay: 1s; }
+    @keyframes bannerIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .banner img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.4s cubic-bezier(.5,.1,.3,1), box-shadow 0.3s;
+    }
+    .banner img.obraz:hover {
+      transform: rotate(-2deg) scale(1.03);
+      box-shadow: 0 8px 32px #ffa50066;
+    }
+
+    .banner-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      font-size: 2em;
+      font-weight: bold;
+      text-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+      pointer-events: none;
+    }
+
+    /* Responsivní iframe */
+    .iframe-container {
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      padding-top: 56.25%;
+      margin-bottom: 10px;
+    }
+    .iframe-container iframe {
+      position: absolute;
+      top: 0; left: 0; bottom: 0; right: 0;
+      width: 100%; height: 100%;
+      border: 0;
+    }
+
+    /* Tlačítko s animací */
+    .magical-button {
+      display: inline-block;
+      padding: 15px 30px;
+      margin-top: 15px;
+      font-size: 1.2em;
+      color: white;
+      background: linear-gradient(45deg, #FFA500, #FF69B4, #87CEFA);
+      border: none;
+      border-radius: 30px;
+      text-decoration: none;
+      box-shadow: 0 0 15px rgba(255, 165, 0, 0.7);
+      animation: glow 2s infinite alternate, pulseBtn 2.8s infinite;
+      transition: transform 0.2s ease;
+    }
+    .magical-button:hover {
+      transform: scale(1.08) rotate(-1deg);
+      box-shadow: 0 0 30px rgba(255, 105, 180, 0.8);
+      animation-play-state: paused;
+    }
+    @keyframes glow {
+      0% { box-shadow: 0 0 10px #FFA500, 0 0 20px #87CEFA; }
+      100% { box-shadow: 0 0 30px #FF69B4, 0 0 40px #FFA500; }
+    }
+    @keyframes pulseBtn {
+      0%, 100% { filter: brightness(1); }
+      50% { filter: brightness(1.12); }
+    }
+
+    .button-container {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    main {
+      padding: 20px;
+      text-align: center;
+    }
+    main p {
+      font-size: 1.2em;
+      max-width: 700px;
+      margin: 0 auto;
+      color: #222;
+    }
+
+    footer {
+      background: #333;
+      color: white;
+      padding: 15px 20px;
+      text-align: center;
+      font-size: 0.9em;
+    }
+
+    .obraz {
+      box-shadow: 3px 3px 5px gray;
+      border-radius: 10px;
+      max-width: 100%;
+      height: auto;
+      transition: transform 0.4s cubic-bezier(.5,.1,.3,1), box-shadow 0.3s;
+    }
+
+    /* Responsivita */
+    @media screen and (max-width: 992px) {
+      header h1 { font-size: 2.5em; }
+      .banner { margin: 15px 10px; }
+    }
+    @media screen and (max-width: 768px) {
+      header h1 { font-size: 2em; }
+      .magical-button { padding: 12px 24px; font-size: 1.1em; }
+    }
+    @media screen and (max-width: 600px) {
+      header h1 { font-size: 1.8em; }
+      .banner { margin: 10px 5px; }
+      .magical-button { padding: 10px 20px; font-size: 1em; }
+    }
+      .media {text-align: center;
+              border-radius: 10px;
+              box-shadow: 2px 2px 3px;
+              padding: 10px;
+              display: flex;
+              justify-content: center;
+              gap: 30px; margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+  <div id="menubar"></div>
+  <script>
+    fetch('menu.html')
+      .then(response => response.text())
+      .then(html => document.getElementById('menubar').innerHTML = html);
+  </script>
+  <div id="bottom-nav"></div> <script> // Načtení spodního menu 
+  fetch('https://ronovys.neocities.org/nabidka.html')   
+  .then(response => response.text())   .then(html => {     document.getElementById('bottom-nav').innerHTML = html;   })   
+  .catch(error => console.error('Chyba při načítání spodního menu:', error)); 
+  </script>
+
+  <header>
+    <h1>Vítejte na Ronových stránkách!</h1>
+  </header>
+
+  <div class="banner" style="padding: 15px;">
+    <p>
+      Ahoj! <br>
+      Já jsem Ron Weasley a toto je můj web. Jeho tvorba je projekt, který mi zadal Albus Brumbál, náš ředitel, na soukromých hodinách s Ginny. Doufám, že se vám můj web bude líbit. <br>
+      Přeji hodně zábavy a objevování!
+    </p>
+    <img class="obraz" style="margin-top: 15px;" src="https://eapi.pcloud.com/getpubthumb?code=XZtqKqZ6QcYy37nFi7fEbsRtbY46zRJAJ8y&linkpassword=&size=1332x1332&crop=0&type=auto" alt="Ron Weasley">
+  </div>
+
+  <div class="banner">
+    <h2>Co zde najdete:</h2>
+    <div class="banner" style="padding: 15px;">
+      <h3 style="text-align:center;">Umělá inteligence</h3>
+      <div class="iframe-container">
+        <iframe src="Náhled/ai1.html"></iframe>
+      </div>
+      <p>Zkuste si natrénovat svůj vlastní jednoduchý model umělé inteligence na souborech pdf a txt. Jelikož ai, aby fungovala, potřebuje velmi výkonná zařízení a spoustu dat, toto je pouze zjednodušená verze.</p>
+      <div class="button-container">
+        <a href="https://ronovys.neocities.org/ai" target="_blank" class="magical-button">Otevřít AI Web</a>
+      </div>
+    </div>
+    <div class="banner" style="padding: 15px;">
+      <h3 style="text-align:center;">Recepty</h3>
+      <div class="iframe-container">
+        <iframe src="Náhled/recept1.html"></iframe>
+      </div>
+      <p>Upečte si sami doma kouzelnické recepty inspirované světem čar a kouzel J. K. Rowling! Upečte si dort jako pro Rona, či svačinku, jakou Ginny jí před svým zápasem!</p>
+      <div class="button-container">
+        <a href="https://ronovys.neocities.org/recept" target="_blank" class="magical-button">Otevřít kuchařku</a>
+      </div>
+    </div>
+  </div>
+<div class="banner" style="padding: 15px;">
+  <h2>Sledujte naše novinky</h2>
+  <a class="media" style="font-size: 2em; color: #5865F2; margin-right: 10px;" href="https://discord.gg/AVrVquf9">
+    <i class="fab fa-discord"></i>
+  </a>
+  <a class="media" style="font-size: 2em; color: #25D366;" href="https://whatsapp.com/channel/0029Vb6ldr94IBhLCfhSlT2V">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+</div>
+
+
+  <main>
+    <p style="font-size: 10px;">Toto je stránka inspirovaná světem Harryho Pottera, ovšem její obsah není v samotné knize zmíněn.</p>
+  </main>
+
+  <footer>
+    &copy; 2025 Ron Weasley
+  </footer>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
