@@ -5,9 +5,15 @@ import authMiddleware from '../../middleware/auth'
 import { supabase } from '../../lib/supabase'
 
 export default async function handler(req, res) {
-  // Povolit CORS a ověřit JWT token pro Auth0 uživatele
+  // Povolit CORS a ověřit JWT token
   await corsMiddleware(req, res)
   await authMiddleware(req, res)
+
+  // Kontrola, že uživatel má roli 'alchymista'
+  const roles = req.user['https://your-app.com/roles'] || []
+  if (!roles.includes('alchymista')) {
+    return res.status(403).json({ error: 'K vytváření receptů musíš mít status alchymista' })
+  }
 
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' })
