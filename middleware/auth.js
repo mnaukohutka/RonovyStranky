@@ -1,22 +1,26 @@
-import jwt from 'jsonwebtoken';
+import { verify } from 'jsonwebtoken';
 
 const AUTH0_SECRET = process.env.AUTH0_CLIENT_SECRET;
 
-export default function authMiddleware(req, res, next) {
-  const authHeader = req.headers.authorization;
-
-  if (!authHeader) {
-    res.status(401).json({ message: 'Authorization header chybí' });
-    return;
-  }
-
-  const token = authHeader.split(' ')[1]; // Bearer token
-
+export default async function authMiddleware(req, res) {
   try {
-    const decoded = jwt.verify(token, AUTH0_SECRET);
-    req.user = decoded; // Data o uživateli předáme dál
-    next(); // Pokračování další funkcí/endpointem
-  } catch (err) {
-    res.status(401).json({ message: 'Neplatný token' });
+    const authHeader = req.headers.authorization || '';
+
+    if (!authHeader.startsWith('Bearer ')) {
+      res.status(401).json({ error: 'Chybí nebo neplatný Authorization header' });
+      return;
+    }
+
+    const token = authHeader.split(' ')[1];
+
+    // Verify JWT token s tajným klíčem
+    const decoded = verify(token, AUTH0_SECRET);
+
+    // Přidej uživatelská data do objektu request pro další zpracování
+    req.user = decoded;
+
+  } catch (error) {
+    res.status(401).json({ error: 'Neplatný nebo vypršelý token' });
+    return;
   }
 }
