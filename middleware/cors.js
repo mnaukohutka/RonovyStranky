@@ -3,7 +3,7 @@ import Cors from 'cors';
 // Povolené metody a původ domény frontend klienta
 const cors = Cors({
   methods: ['GET', 'HEAD', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  origin: 'https://tvojeneocities.neocities.org',
+  origin: 'https://ronovys.neocities.org/',
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true,
 });
